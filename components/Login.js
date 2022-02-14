@@ -1,14 +1,19 @@
 import React, { Component, useState } from "react";
-import { Text, View, TextInput, StyleSheet } from "react-native";
+import { Text, View, TextInput, StyleSheet, Pressable } from "react-native";
 import { TouchableOpacity } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-export default function Login() {
+export default function Login({ navigation }) {
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = () => {
+    navigation.navigate("Home");
+  };
 
   return (
-    <View>
+    <View style={styles.container}>
       <Text style={styles.text}>TriHealth</Text>
       <TextInput
         style={styles.inputs}
@@ -16,15 +21,28 @@ export default function Login() {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       ></TextInput>
-      <TextInput style={styles.inputs} placeholder="Password"></TextInput>
+      <TextInput
+        style={styles.inputs}
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      ></TextInput>
       <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Login</Text>
+        <Pressable onPress={handleLogin} style={styles.buttonText}>
+          <Text style={styles.buttonText}>Login</Text>
+        </Pressable>
       </TouchableOpacity>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
   inputs: {
     width: 240,
     marginHorizontal: 20,
@@ -45,7 +63,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     textAlign: "center",
     width: 70,
-    marginLeft: 100,
   },
   buttonText: {
     fontSize: 14,
