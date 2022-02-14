@@ -1,8 +1,6 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import { Text, View, TextInput, StyleSheet, Pressable } from "react-native";
 import { TouchableOpacity } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 export default function Login({ navigation }) {
   const [email, setEmail] = useState("");
