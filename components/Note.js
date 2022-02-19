@@ -8,32 +8,20 @@ import {
 } from "react-native";
 import React from "react";
 
-const Note = ({ data }) => {
+const Note = ({ entry }) => {
+  const { id, date, description } = entry;
+  console.log(entry);
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Feb 16</Text>
-      <Text style={styles.text}>Date: Feb 15, 2022</Text>
-      <Text style={styles.text}>Date: Feb 16, 2022</Text>
+      <Text style={styles.date}>{date}</Text>
+      <Text style={styles.text}>{description}</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  //   container: {
-  //     flex: 1,
-  //     display: "flex",
-  //     flexDirection: "row",
-  //     flexWrap: "wrap",
-  //     backgroundColor: "lightgrey",
-  //     alignItems: "center",
-  //     justifyContent: "space-between",
-  //     marginHorizontal: 20,
-  //     marginBottom: 10,
-  //   },
-  text: {
-    display: "flex",
-    flexDirection: "row",
-    padding: 10,
+  date: {
+    fontWeight: "bold",
   },
 });
 

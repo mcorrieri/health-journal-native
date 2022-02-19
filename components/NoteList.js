@@ -21,11 +21,16 @@ const NoteList = () => {
       description: "Ate 3 hotdogs before doing legs. Felt really good!",
     },
   ];
-  return (
-    <View style={styles.container}>
-      <Note data={data} />
-    </View>
-  );
+
+  const entryList = data.map((entry) => {
+    console.log(entry);
+    return (
+      <View style={styles.container}>
+        <Note entry={entry} />
+      </View>
+    );
+  });
+  return <View style={styles.container}>{entryList}</View>;
 };
 
 const styles = StyleSheet.create({
@@ -34,11 +39,11 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     backgroundColor: "lightgrey",
-    alignItems: "center",
     justifyContent: "center",
     marginHorizontal: 20,
     marginVertical: 10,
     borderRadius: 5,
+    padding: 10,
   },
 });
 
