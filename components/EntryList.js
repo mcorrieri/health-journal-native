@@ -1,8 +1,8 @@
 import { View, Text, StyleSheet } from "react-native";
 import React from "react";
-import Note from "./Note";
+import Entry from "./Entry";
 
-const NoteList = () => {
+const EntryList = () => {
   const data = [
     {
       id: 1,
@@ -25,8 +25,8 @@ const NoteList = () => {
   const entryList = data.map((entry) => {
     console.log(entry);
     return (
-      <View style={styles.container}>
-        <Note entry={entry} />
+      <View key={entry.id} style={styles.container}>
+        <Entry entry={entry} />
       </View>
     );
   });
@@ -47,4 +47,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default NoteList;
+export default EntryList;

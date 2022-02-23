@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import React from "react";
 
-const Note = ({ entry }) => {
+const Entry = ({ entry }) => {
   const { id, date, description } = entry;
   console.log(entry);
   return (
@@ -25,4 +25,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Note;
+export default Entry;

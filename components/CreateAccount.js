@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { TouchableOpacity } from "react-native";
 
-export default function Login({ navigation }) {
+export default function CreateAccount({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -34,13 +34,13 @@ export default function Login({ navigation }) {
       ></TextInput>
       <TouchableOpacity style={styles.button}>
         <Pressable onPress={handleLogin} style={styles.buttonText}>
-          <Text style={styles.buttonText}>Login</Text>
+          <Text style={styles.buttonText}>Create Account</Text>
         </Pressable>
       </TouchableOpacity>
       <Button
-        title="Go to Create Account"
+        title="Go to Login"
         onPress={() => {
-          navigation.navigate("Create Account");
+          navigation.navigate("Login");
         }}
       />
     </View>
@@ -79,5 +79,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: "white",
     fontWeight: "bold",
+    justifyContent: "center",
   },
 });

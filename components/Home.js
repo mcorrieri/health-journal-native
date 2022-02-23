@@ -1,13 +1,16 @@
 import { Text, View, TextInput, StyleSheet } from "react-native";
 import React from "react";
-import NoteList from "./NoteList";
+import EntryList from "./EntryList";
 import Sidebar from "./Sidebar";
-
+import CreateEntry from "./CreateEntry";
 const Home = () => {
   return (
     <View style={styles.container}>
       <Sidebar />
-      <NoteList />
+      <View style={styles.page}>
+        <CreateEntry />
+        <EntryList />
+      </View>
     </View>
   );
 };
@@ -22,6 +25,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginHorizontal: 0,
   },
+  // page: {
+  //   direction: "flex",
+  //   flexDirection: "column",
+  // },
 });
 
 export default Home;
