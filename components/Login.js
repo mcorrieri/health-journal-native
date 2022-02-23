@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { AuthContext, AuthProvider } from "./AuthProvider";
+
 import {
   Text,
   View,
@@ -10,10 +12,12 @@ import {
 import { TouchableOpacity } from "react-native";
 
 export default function Login({ navigation }) {
+  const { login } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = () => {
+    login();
     navigation.navigate("AppTabs");
   };
 
@@ -74,6 +78,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     textAlign: "center",
     width: 70,
+    marginBottom: 30,
   },
   buttonText: {
     fontSize: 14,

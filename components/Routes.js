@@ -19,9 +19,9 @@ export const Routes = () => {
     AsyncStorage.getItem("user")
       .then((userString) => {
         if (userString) {
-        } else {
-          setLoading(false);
+          login();
         }
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err);
@@ -31,7 +31,7 @@ export const Routes = () => {
 
   if (loading) {
     return (
-      <ActivityIndicator style={styles.loading} color="#0000ff" size="large" />
+      <ActivityIndicator style={styles.loading} color="red" size="large" />
     );
   }
 
@@ -40,7 +40,10 @@ export const Routes = () => {
       {user ? (
         <AppTabs />
       ) : (
-        <Stack.Navigator initialRouteName="Login">
+        <Stack.Navigator
+          screenOptions={{ header: () => null }}
+          initialRouteName="Login"
+        >
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen
             options={{
