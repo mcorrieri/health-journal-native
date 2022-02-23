@@ -1,15 +1,14 @@
-import { Text, View, TextInput, StyleSheet } from "react-native";
-import React from "react";
-import EntryList from "./EntryList";
+import { Text, View, TextInput, StyleSheet, Button } from "react-native";
+import React, { useContext } from "react";
 import Sidebar from "./Sidebar";
-import CreateEntry from "./CreateEntry";
+import { AuthContext, AuthProvider } from "./AuthProvider";
 const Home = () => {
+  const { logout } = useContext(AuthContext);
   return (
     <View style={styles.container}>
       <Sidebar />
       <View style={styles.page}>
-        <CreateEntry />
-        <EntryList />
+        <Button title="logout" onPress={() => logout()} />
       </View>
     </View>
   );

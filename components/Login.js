@@ -14,7 +14,7 @@ export default function Login({ navigation }) {
   const [password, setPassword] = useState("");
 
   const handleLogin = () => {
-    navigation.navigate("Home");
+    navigation.navigate("AppTabs");
   };
 
   return (

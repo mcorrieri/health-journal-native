@@ -8,8 +8,14 @@ import Sidebar from "./components/Sidebar";
 import Profile from "./components/Profile";
 import CreateEntry from "./components/CreateEntry";
 import { Routes } from "./components/Routes";
+import { AuthProvider } from "./components/AuthProvider";
+
 export default function App() {
-  return <Routes />;
+  return (
+    <AuthProvider>
+      <Routes />
+    </AuthProvider>
+  );
 }
 
 const Stack = createNativeStackNavigator();
