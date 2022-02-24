@@ -1,14 +1,12 @@
 import { StyleSheet } from "react-native";
-import { NavigationContainer, StackActions } from "@react-navigation/native";
+import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Login from "./Login";
-import CreateAccount from "./CreateAccount";
 import { ActivityIndicator } from "react-native";
 import React, { useContext, useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { AuthContext } from "./AuthProvider";
 import AppTabs from "./AppTabs";
-import Home from "./Home";
+import AuthStack from "./AuthStack";
 
 export const Routes = () => {
   const { user, login } = useContext(AuthContext);
@@ -16,6 +14,7 @@ export const Routes = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    //update this for api call
     AsyncStorage.getItem("user")
       .then((userString) => {
         if (userString) {
@@ -37,24 +36,7 @@ export const Routes = () => {
 
   return (
     <NavigationContainer>
-      {user ? (
-        <AppTabs />
-      ) : (
-        <Stack.Navigator
-          screenOptions={{ header: () => null }}
-          initialRouteName="Login"
-        >
-          <Stack.Screen name="Login" component={Login} />
-          <Stack.Screen
-            options={{
-              headerTitle: "Sign Up",
-            }}
-            name="Create Account"
-            component={CreateAccount}
-          />
-          <Stack.Screen name="AppTabs" component={AppTabs} />
-        </Stack.Navigator>
-      )}
+      {user ? <AppTabs /> : <AuthStack />}
     </NavigationContainer>
   );
 };

@@ -1,19 +1,51 @@
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Home from "./Home";
+import { Feather } from "@expo/vector-icons";
+import HomeStack from "./HomeStack";
 
 const Tabs = createBottomTabNavigator();
 
 function Search() {
-  <Text>Search</Text>;
+  return (
+    <View style={styles.center}>
+      <Text>Search</Text>
+    </View>
+  );
 }
 
 export default function AppTabs() {
   return (
-    <Tabs.Navigator>
-      <Tabs.Screen name="Home" component={Home} />
+    <Tabs.Navigator
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ color, size }) => {
+          let iconName;
+
+          if (route.name === "Home") {
+            iconName = "home";
+          } else if (route.name === "Search") {
+            iconName = "search";
+          }
+
+          // You can return any component that you like here!
+          return <Feather name={iconName} size={size} color={color} />;
+        },
+        tabBarActiveTintColor: "tomato",
+        tabBarInactiveTintColor: "gray",
+      })}
+    >
+      <Tabs.Screen name="Home" component={HomeStack} />
       <Tabs.Screen name="Search" component={Search} />
     </Tabs.Navigator>
   );
 }
+
+const styles = StyleSheet.create({
+  center: {
+    flex: 1,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "white",
+  },
+});

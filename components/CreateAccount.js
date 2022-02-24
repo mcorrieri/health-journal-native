@@ -14,7 +14,7 @@ export default function CreateAccount({ navigation }) {
   const [password, setPassword] = useState("");
 
   const handleLogin = () => {
-    navigation.navigate("Home");
+    navigation.navigate("HomeStack");
   };
 
   return (
