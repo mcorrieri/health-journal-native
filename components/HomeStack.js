@@ -40,7 +40,9 @@ function Feed({ navigation }) {
             <Button
               title={item}
               onPress={() => {
-                navigation.navigate("Entries");
+                navigation.navigate("Entries", {
+                  name: item,
+                });
               }}
             />
           );
@@ -50,10 +52,10 @@ function Feed({ navigation }) {
   );
 }
 
-function Entries() {
+function Entries({ route }) {
   return (
     <View>
-      <Text>This is where entries will go</Text>
+      <Text>{route.params.name}</Text>
     </View>
   );
 }
@@ -63,7 +65,13 @@ export default function HomeStack() {
 
   return (
     <Stack.Navigator initialRouteName="Feed">
-      <Stack.Screen name="Entries" component={Entries} />
+      <Stack.Screen
+        options={({ route }) => ({
+          headerTitle: `Entry Date: ${route.params.name}`,
+        })}
+        name="Entries"
+        component={Entries}
+      />
       <Stack.Screen
         name="Feed"
         component={Feed}
