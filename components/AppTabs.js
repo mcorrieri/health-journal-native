@@ -18,7 +18,7 @@ export default function AppTabs() {
   return (
     <Tabs.Navigator
       screenOptions={({ route }) => ({
-        tabBarIcon: ({ color, size }) => {
+        tabBarIcon: ({ focused, color, size }) => {
           let iconName;
 
           if (route.name === "Home") {
@@ -34,7 +34,11 @@ export default function AppTabs() {
         tabBarInactiveTintColor: "gray",
       })}
     >
-      <Tabs.Screen name="Home" component={HomeStack} />
+      <Tabs.Screen
+        options={{ headerShown: false }}
+        name="Home"
+        component={HomeStack}
+      />
       <Tabs.Screen name="Search" component={Search} />
     </Tabs.Navigator>
   );

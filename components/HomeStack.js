@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { TouchableOpacity } from "react-native";
 import { AuthContext, AuthProvider } from "./AuthProvider";
 import { FlatList } from "react-native";
+import Center from "./Center";
 
 const Stack = createNativeStackNavigator();
 
@@ -52,11 +53,27 @@ function Feed({ navigation }) {
   );
 }
 
-function Entries({ route }) {
+function Entries({ route, navigation }) {
   return (
-    <View>
+    <Center>
       <Text>{route.params.name}</Text>
-    </View>
+      <Button
+        title="Edit This Entry"
+        onPress={() => {
+          navigation.navigate("EditEntry", {
+            name: route.params.name,
+          });
+        }}
+      />
+    </Center>
+  );
+}
+
+function EditEntry({ route }) {
+  return (
+    <Center>
+      <Text>Editing {route.params.name}...</Text>
+    </Center>
   );
 }
 
@@ -65,6 +82,13 @@ export default function HomeStack() {
 
   return (
     <Stack.Navigator initialRouteName="Feed">
+      <Stack.Screen
+        options={({ route }) => ({
+          headerTitle: `Edit Entry: ${route.params.name}`,
+        })}
+        name="EditEntry"
+        component={EditEntry}
+      />
       <Stack.Screen
         options={({ route }) => ({
           headerTitle: `Entry Date: ${route.params.name}`,
@@ -83,7 +107,7 @@ export default function HomeStack() {
                   logout();
                 }}
               >
-                <Text>LOGOUT</Text>
+                <Text style={{ color: "red" }}>Logout</Text>
               </TouchableOpacity>
             );
           },
