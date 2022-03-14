@@ -1,18 +1,10 @@
-import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Feather } from "@expo/vector-icons";
 import HomeStack from "./HomeStack";
+import SearchStack from "./SearchStack";
 
 const Tabs = createBottomTabNavigator();
-
-function Search() {
-  return (
-    <View style={styles.center}>
-      <Text>Search</Text>
-    </View>
-  );
-}
 
 export default function AppTabs() {
   return (
@@ -39,17 +31,11 @@ export default function AppTabs() {
         name="Home"
         component={HomeStack}
       />
-      <Tabs.Screen name="Search" component={Search} />
+      <Tabs.Screen
+        options={{ headerShown: false }}
+        name="Search"
+        component={SearchStack}
+      />
     </Tabs.Navigator>
   );
 }
-
-const styles = StyleSheet.create({
-  center: {
-    flex: 1,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "white",
-  },
-});

@@ -10,22 +10,22 @@ const Stack = createNativeStackNavigator();
 
 function Feed({ navigation }) {
   const data = [
-    "duey",
-    "mike",
-    "chrissy",
-    "other mike",
-    "bb",
-    "stanky",
-    "creamy",
-    "acorn",
-    "bba",
-    "stankya",
-    "creamya",
-    "acorna",
-    "bbc",
-    "stankyc",
-    "creamyc",
-    "acornc",
+    "Duey",
+    "Mike",
+    "Chrissy",
+    "Nester",
+    "Brian",
+    "Kevvy",
+    "Rick",
+    "Mike b",
+    "Kyle",
+    "Davies",
+    "Jake",
+    "Franky",
+    "Sil",
+    "Paulie",
+    "Hamburgerman",
+    "Turtle",
   ];
   return (
     <View
@@ -85,6 +85,17 @@ export default function HomeStack() {
       <Stack.Screen
         options={({ route }) => ({
           headerTitle: `Edit Entry: ${route.params.name}`,
+          headerRight: () => {
+            return (
+              <TouchableOpacity
+                onPress={() => {
+                  //submit edit form
+                }}
+              >
+                <Text style={{ color: "red", paddingRight: 5 }}>Done</Text>
+              </TouchableOpacity>
+            );
+          },
         })}
         name="EditEntry"
         component={EditEntry}
